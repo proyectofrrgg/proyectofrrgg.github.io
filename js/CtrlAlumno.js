@@ -50,11 +50,10 @@ async function busca() {
           import("./tipos.js").
                   Alumno} */
       const data = doc.data();
-      forma.matricula.value = data.matricula;
-      forma.nombre.value = data.nombre || "";
-      forma.telefono.value = data.telefono || "";
-      forma.grupo.value = data.grupo || "";
-      forma.fecha.value = data.fecha || "";
+      forma.codigo.value = data.codigo;
+      forma.marca.value = data.marca || "";
+      forma.precio.value = data.precio || "";
+      forma.color.value = data.color || "";
       forma.addEventListener(
         "submit", guarda);
       forma.eliminar.
@@ -76,22 +75,20 @@ async function guarda(evt) {
     evt.preventDefault();
     const formData =
       new FormData(forma);
-    const matricula = getString(
-        formData, "matricula").trim();  
-    const nombre = getString(formData, "nombre").trim();
-    const telefono = getString(formData, "telefono").trim();
-    const grupo = getString(formData, "grupo").trim();
-    const fecha = getString(formData, "fecha").trim();
+    const codigo = getString(
+        formData, "codigo").trim();  
+    const  marca = getString(formData, "marca").trim();
+    const precio = getString(formData, "precio").trim();
+    const color = getString(formData, "color").trim();
     /**
      * @type {
         import("./tipos.js").
                 Alumno} */
     const modelo = {
-      matricula, 
-      nombre,
-      telefono,
-      grupo,
-      fecha
+      codigo, 
+      marca,
+      precio,
+      color,
     };
     await daoAlumno.
       doc(id).
